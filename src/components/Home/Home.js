@@ -11,16 +11,18 @@ class Home extends Component {
     return (
       <div className={styles.searchBoxWrapper}>
         <img src={banner} />
-        <span
-          className={styles.searchHint}
-        >
+        <div className={styles.searchWrapper}>
+          <span
+            className={styles.searchHint}
+          >
 Search users' gist by typing username and hit enter
-        </span>
-        <TextField
-          type="text"
-          className={styles.searchBox}
-          onEnter={value => this.props.dispatch(loadPublicGistsOfUser(value))}
-        />
+          </span>
+          <TextField
+            type="text"
+            className={styles.searchBox}
+            onEnter={value => this.props.dispatch(loadPublicGistsOfUser(value))}
+          />
+        </div>
       </div>
     );
   }
