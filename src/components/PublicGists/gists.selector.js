@@ -6,4 +6,5 @@ export const selectGists = state => ({
 
 export const getError = state => ({
   error: state.gistsApi.get('error'),
+  gists: state.gistsApi.get('publicGists'),
 });

@@ -41,12 +41,7 @@ class PublicGists extends Component {
     return (
       <PublicGistsWrapper className={styles.wrapper}>
         <div className={styles.searchBoxWrapper}>
-          <span className={styles.searchHint}>Search users' gist by typing username and hit enter</span>
-          <TextField
-            type="text"
-            className={styles.searchBox}
-            onEnter={value => this.props.dispatch(loadPublicGistsOfUser(value))}
-          />
+          BACK BUTTON HERE
         </div>
 
         {gists.size ? <UserDetails user={user} /> : null}

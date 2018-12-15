@@ -4,8 +4,8 @@ import ErrorPopup from '../../components/ErrorPopup/ErrorPopup';
 import PublicGists from '../../components/PublicGists/PublicGists';
 import { getError } from '../../components/PublicGists/gists.selector';
 import { hideError } from '../../actions/action-creator';
-import styles from './App.css';
 import '../../global.css';
+import Home from '../../components/Home/Home';
 
 class App extends Component {
   constructor(props, context) {
@@ -23,10 +23,10 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.gists);
     return (
       <div>
-        <div className={styles.background} />
-        <PublicGists />
+        {!this.props.gists.size ? <Home /> : <PublicGists />}
         {this.props.error ? (
           <ErrorPopup
             error={this.props.error}
