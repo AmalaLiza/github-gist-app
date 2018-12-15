@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import styles from './ErrorPopup.css';
 
 export default class ErrorPopup extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-  }
+  static propTypes = {
+    hideError: PropTypes.func,
+    error: PropTypes.string,
+  };
+
+  static defaultProps = {
+    hideError: f => f,
+    error: '',
+  };
 
   componentDidMount() {
     window.setTimeout(this.props.hideError, 3000);
@@ -21,15 +27,3 @@ export default class ErrorPopup extends React.Component {
     );
   }
 }
-
-ErrorPopup.propTypes = {
-  /**
-   * Function to hide error
-   */
-  hideError: PropTypes.func.isRequired,
-
-  /**
-   * Error value
-   */
-  error: PropTypes.string.isRequired,
-};

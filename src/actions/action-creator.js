@@ -7,7 +7,7 @@ import {
   ACTION_LOAD_FORKS_ERROR,
   ACTION_HIDE_ERROR,
   ACTION_CLEAR_GISTS,
-} from './actions-constants';
+} from './action-constants';
 
 export function loadPublicGistsOfUser(userName) {
   return {

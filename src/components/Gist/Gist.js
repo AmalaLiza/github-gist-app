@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Immutable from 'immutable';
 import GistDetails from './GistDetails';
 import Avatar from '../Avatar/Avatar';
 import Tag from '../Tag/Tag';
@@ -25,9 +26,17 @@ export const getTag = (type) => {
 };
 
 class Gist extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
+  static propTypes = {
+    gist: PropTypes.instanceOf(Immutable.Map),
+    dispatch: PropTypes.func,
+
+  };
+
+  static defaultProps = {
+    gist: Immutable.fromJS({}),
+    dispatch: f => f,
+
+  };
 
   componentWillMount() {
     // To dispatch action to load all forks of each gists.
@@ -48,17 +57,19 @@ class Gist extends Component {
         <div className={`${styles.gistFooter} clearfix`}>
           <div className={styles.tagWrapper}>
 
-            {gist.get('files').toArray().map((file, index) => {
-              if (index < 3) {
-                return (
-                  <Tag
-                    key={index}
-                    value={file.get('language') && file.get('language').length
-                      ? file.get('language') : getTag(file.get('type'))}
-                  />
-                );
-              }
-            })}
+            {gist.get('files')
+              .toArray()
+              .map((file, index) => {
+                if (index < 3) {
+                  return (
+                    <Tag
+                      key={file.get('filename')}
+                      value={file.get('language') && file.get('language').length
+                        ? file.get('language') : getTag(file.get('type'))}
+                    />
+                  );
+                }
+              })}
 
             {gist.get('files').size > 3 ? <List gist={gist} /> : null}
 
@@ -67,14 +78,15 @@ class Gist extends Component {
           {gist.get('forks') && gist.get('forks').size ? (
             <div className={styles.forksWrapper}>
               <span className={styles.forkIcon} />
-              {gist.get('forks').map((fork, index) => (
-                <Avatar
-                  key={index}
-                  className={styles.user}
-                  onClick={() => window.open(fork.getIn(['html_url']))}
-                  src={fork.getIn(['owner', 'avatar_url'])}
-                />
-              ))}
+              {gist.get('forks')
+                .map(fork => (
+                  <Avatar
+                    key={fork.get('forks_url')}
+                    className={styles.user}
+                    onClick={() => window.open(fork.getIn(['html_url']))}
+                    src={fork.getIn(['owner', 'avatar_url'])}
+                  />
+                ))}
 
             </div>
           ) : null}
@@ -84,13 +96,6 @@ class Gist extends Component {
     );
   }
 }
-
-Gist.propTypes = {
-  /**
-   * Data to load gist component
-   */
-  gist: PropTypes.object.isRequired,
-};
 
 const mapStateToProps = state => selectGists(state);
 

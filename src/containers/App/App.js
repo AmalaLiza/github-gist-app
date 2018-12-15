@@ -11,14 +11,14 @@ import Home from '../../components/Home/Home';
 
 class App extends Component {
   static propTypes = {
-    error: PropTypes.bool,
+    error: PropTypes.string,
     gists: PropTypes.instanceOf(Immutable.Map),
     dispatch: PropTypes.func,
   };
 
   static defaultProps = {
-    error: false,
-    gists: Immutable.Map(),
+    error: '',
+    gists: Immutable.fromJS({}),
     dispatch: f => f,
   };
 
