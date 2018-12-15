@@ -1,10 +1,11 @@
 import { fromJS } from 'immutable';
 import {
-  ACTION_LOAD_PUBLIC_GISTS_SUCCESS,
+  ACTION_CLEAR_GISTS,
+  ACTION_HIDE_ERROR,
+  ACTION_LOAD_FORKS_ERROR,
   ACTION_LOAD_FORKS_SUCCESS,
   ACTION_LOAD_PUBLIC_GISTS_ERROR,
-  ACTION_LOAD_FORKS_ERROR,
-  ACTION_HIDE_ERROR,
+  ACTION_LOAD_PUBLIC_GISTS_SUCCESS,
 } from '../actions/actions-constants';
 
 const initialState = fromJS({
@@ -13,10 +14,8 @@ const initialState = fromJS({
   error: false,
 });
 
-export function gistsReducer(state = initialState, action) {
-
+export default function gistsReducer(state = initialState, action) {
   switch (action.type) {
-
     case ACTION_LOAD_PUBLIC_GISTS_SUCCESS:
       state = state.set('user', fromJS(action.payload.user));
       return state.set('publicGists', fromJS(action.payload.gists));
@@ -32,6 +31,9 @@ export function gistsReducer(state = initialState, action) {
 
     case ACTION_HIDE_ERROR:
       return state.update('error', () => false);
+
+    case ACTION_CLEAR_GISTS:
+      return state.update('publicGists', () => fromJS({}));
 
     default:
       return state;

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Gist from '../Gist/Gist';
 import UserDetails from '../UserDetails/UserDetails';
-import TextField from '../TextField/TextField';
-import { loadPublicGistsOfUser } from '../../actions/action-creator';
+import { clearGists } from '../../actions/action-creator';
 import { selectGists } from './gists.selector';
 import styles from './PublicGists.css';
 
@@ -36,12 +35,12 @@ class PublicGists extends Component {
   }
 
   render() {
-    const { gists, user } = this.props;
+    const { gists, user, dispatch } = this.props;
 
     return (
       <PublicGistsWrapper className={styles.wrapper}>
-        <div className={styles.searchBoxWrapper}>
-          BACK BUTTON HERE
+        <div className={styles.searchBoxWrapper} onClick={() => dispatch(clearGists())}>
+
         </div>
 
         {gists.size ? <UserDetails user={user} /> : null}
@@ -69,6 +68,7 @@ PublicGists.propTypes = {
    * Data to load gists components
    */
   gists: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
 
   /**
    * Data to load user details

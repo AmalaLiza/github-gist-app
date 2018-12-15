@@ -161,7 +161,7 @@ module.exports = () => ({
     }),
 
     new CopyWebpackPlugin([
-      { from: 'src/assets/favicon.jpg', to: 'favicon.jpg' },
+      { from: 'src/assets/favicon.png', to: 'favicon.png' },
     ], { copyUnmodified: true }),
   ],
   externals: [
