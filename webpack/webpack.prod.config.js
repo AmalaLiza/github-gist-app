@@ -27,7 +27,7 @@ module.exports = () => ({
   module: {
     rules: [
       {
-        test: /\.(png|jpg|jpeg(2)?)(\?[a-z0-9]+)?$/,
+        test: /\.(ttf|png|jpg|jpeg(2)?)(\?[a-z0-9]+)?$/,
         use: [
           { loader: 'file-loader' },
         ],
@@ -161,7 +161,7 @@ module.exports = () => ({
     }),
 
     new CopyWebpackPlugin([
-      { from: 'src/assets/favicon.jpg', to: 'favicon.jpg' },
+      { from: 'src/assets/favicon.png', to: 'favicon.png' },
     ], { copyUnmodified: true }),
   ],
   externals: [

@@ -4,7 +4,7 @@ import {
   loadForksSuccess,
   loadForksError,
 } from '../actions/action-creator';
-import { ACTION_LOAD_FORKS } from '../actions/actions-constants';
+import { ACTION_LOAD_FORKS } from '../actions/action-constants';
 
 /**
  * Makes GET request

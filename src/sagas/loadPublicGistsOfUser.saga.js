@@ -8,7 +8,7 @@ import {
 import {
   BASE_URL,
   ACTION_LOAD_PUBLIC_GISTS,
-} from '../actions/actions-constants';
+} from '../actions/action-constants';
 
 /**
  * Makes GET request

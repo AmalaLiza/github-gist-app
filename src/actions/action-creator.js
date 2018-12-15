@@ -6,7 +6,8 @@ import {
   ACTION_LOAD_FORKS_SUCCESS,
   ACTION_LOAD_FORKS_ERROR,
   ACTION_HIDE_ERROR,
-} from './actions-constants';
+  ACTION_CLEAR_GISTS,
+} from './action-constants';
 
 export function loadPublicGistsOfUser(userName) {
   return {
@@ -56,5 +57,11 @@ export function loadForksError(error) {
 export function hideError() {
   return {
     type: ACTION_HIDE_ERROR,
+  };
+}
+
+export function clearGists() {
+  return {
+    type: ACTION_CLEAR_GISTS,
   };
 }
