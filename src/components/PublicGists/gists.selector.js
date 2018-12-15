@@ -1,4 +1,3 @@
-
 export const selectGists = state => ({
   gists: state.gistsApi.get('publicGists'),
   user: state.gistsApi.get('user'),

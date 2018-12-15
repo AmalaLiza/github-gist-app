@@ -2,6 +2,27 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 export default class TextField extends React.Component {
+  static propTypes = {
+    type: PropTypes.string,
+    id: PropTypes.string,
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    onEnter: PropTypes.func,
+    onEsc: PropTypes.func,
+    defaultValue: PropTypes.string,
+    value: PropTypes.string,
+  };
+
+  static defaultProps = {
+    type: '',
+    id: '',
+    className: '',
+    onChange: f => f,
+    onEnter: f => f,
+    onEsc: f => f,
+    defaultValue: '',
+    value: '',
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -12,13 +33,12 @@ export default class TextField extends React.Component {
 
   /**
    * Function to handle on change event of input box.
-   **/
+   * */
   handleChange(event) {
     if (this.props.onChange) {
       let value = event.target.value;
 
-      if (this.props.type === 'number')
-        value = value ? +value : null;
+      if (this.props.type === 'number') value = value ? +value : null;
 
       this.props.onChange(value);
     }
@@ -28,7 +48,7 @@ export default class TextField extends React.Component {
    * Function to handle on key down event of input box.
    * Handles on enter functionality.
    * @param event
-   **/
+   * */
   handleKeyDown(event) {
     if (event.keyCode === 13 && this.props.onEnter) {
       this.props.onEnter(event.target.value, event);
@@ -46,42 +66,16 @@ export default class TextField extends React.Component {
       value,
     } = this.props;
 
-    return (<input type={type}
-                   id={id}
-                   className={className}
-                   defaultValue={defaultValue}
-                   value={value}
-                   onKeyDown={this.handleKeyDown}
-                   onChange={this.handleChange}
-                   autoFocus={true}
-      />
+    return (<input
+      type={type}
+      id={id}
+      className={className}
+      defaultValue={defaultValue}
+      value={value}
+      onKeyDown={this.handleKeyDown}
+      onChange={this.handleChange}
+      autoFocus
+    />
     );
   }
 }
-
-TextField.propTypes = {
-  /**
-   * type email/password, default is text
-   */
-  type: PropTypes.string,
-  /**
-   * Class name for the component
-   */
-  className: PropTypes.string,
-  /**
-   * Callback for on input change
-   */
-  onChange: PropTypes.func,
-  /**
-   * Callback for on enter
-   */
-  onEnter: PropTypes.func,
-  /**
-   * Callback for on Esc key press
-   */
-  onEsc: PropTypes.func,
-  /**
-   * Default value of the input field
-   */
-  defaultValue: PropTypes.any,
-};

@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import * as ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import Immutable from 'immutable';
 import styles from './Gist.css';
 import { getTag } from './Gist';
 import Tag from '../Tag/Tag';
 
 class List extends Component {
-  constructor(props, context) {
-    super(props, context);
+  static propTypes = {
+    gist: PropTypes.instanceOf(Immutable.Map),
+  };
+
+  static defaultProps = {
+    gist: Immutable.fromJS({}),
+  };
+
+  constructor(props) {
+    super(props);
     this.state = {
       showList: '',
     };
@@ -17,7 +26,7 @@ class List extends Component {
 
   /**
    * Function to handle Off click.
-   **/
+   * */
   hideAllLists(e) {
     const domNode = ReactDOM.findDOMNode(this);
     if (!domNode || !domNode.contains(e.target)) {
@@ -27,56 +36,58 @@ class List extends Component {
 
   /**
    * Function to show and hide list items.
-   **/
+   * */
   showList(e) {
-    if (this.state.showList !== this.props.gist.get('id'))
+    if (this.state.showList !== this.props.gist.get('id')) {
       this.setState({ showList: this.props.gist.get('id') });
-    else
+    } else {
       this.setState({ showList: '' });
+    }
     e.stopPropagation();
   }
 
   componentDidMount() {
-    //Binds click action to component.
+    // Binds click action to component.
     document.addEventListener('click', this.hideAllLists, false);
   }
 
   componentWillUnmount() {
-    //Unbinds click action from. component
+    // Unbinds click action from. component
     document.removeEventListener('click', this.hideAllLists, false);
   }
 
   render() {
-
     const { gist } = this.props;
 
-    return <div className={styles.extraTags}>
-      <span className={styles.extra}
-            onClick={this.showList}>
-        +{gist.get('files').size - 3}
-      </span>
+    return (
+      <div className={styles.extraTags}>
+        <span
+          className={styles.extra}
+          onClick={this.showList}
+        >
+        +
+          {gist.get('files').size - 3}
+        </span>
 
-      {gist.get('id') === this.state.showList ? <div className={styles.list}>
+        {gist.get('id') === this.state.showList ? (
+          <div className={styles.list}>
 
-        {gist.get('files').toArray().map((file, index) => {
-          if (index >= 3)
-            return <Tag key={index}
-                        value={file.get('language') && file.get('language').length ?
-                          file.get('language') : getTag(file.get('type'))}>
-            </Tag>;
-        })}
+            {gist.get('files')
+              .splice(3, 6)
+              .map(file => (
+                <Tag
+                  key={file.get('language')}
+                  value={file.get('language') && file.get('language').length
+                    ? file.get('language') : getTag(file.get('type'))}
+                />
+              ))
+            }
 
-      </div> : null}
-    </div>;
+          </div>
+        ) : null}
+      </div>
+    );
   }
 }
-
-List.propTypes = {
-  /**
-   * Data to load gist component
-   */
-  gist: PropTypes.object.isRequired,
-
-};
 
 export default List;

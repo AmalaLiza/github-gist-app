@@ -98,5 +98,4 @@ class Gist extends Component {
 }
 
 const mapStateToProps = state => selectGists(state);
-
 export default connect(mapStateToProps)(Gist);

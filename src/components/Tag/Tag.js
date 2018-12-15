@@ -4,12 +4,12 @@ import styles from './Tag.css';
 
 const Tag = ({ value }) => <span className={styles.tag}>{value}</span>;
 
-export default Tag;
-
 Tag.propTypes = {
-
-  /**
-   * Tag value
-   */
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
+
+Tag.defaultProps = {
+  value: '',
+};
+
+export default Tag;
