@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+import Immutable from 'immutable';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ErrorPopup from '../../components/ErrorPopup/ErrorPopup';
@@ -8,8 +10,20 @@ import '../../global.css';
 import Home from '../../components/Home/Home';
 
 class App extends Component {
-  constructor(props, context) {
-    super(props, context);
+  static propTypes = {
+    error: PropTypes.bool,
+    gists: PropTypes.instanceOf(Immutable.Map),
+    dispatch: PropTypes.func,
+  };
+
+  static defaultProps = {
+    error: false,
+    gists: Immutable.Map(),
+    dispatch: f => f,
+  };
+
+  constructor(props) {
+    super(props);
     this.hideError = this.hideError.bind(this);
   }
 
@@ -23,13 +37,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.gists);
+    const { gists, error } = this.props;
     return (
       <div>
-        {!this.props.gists.size ? <Home /> : <PublicGists />}
-        {this.props.error ? (
+        {gists.size ? <PublicGists /> : <Home />}
+        {error ? (
           <ErrorPopup
-            error={this.props.error}
+            error={error}
             hideError={this.hideError}
           />
         ) : null}
@@ -39,5 +53,4 @@ class App extends Component {
 }
 
 const mapStateToProps = state => getError(state);
-
 export default connect(mapStateToProps)(App);

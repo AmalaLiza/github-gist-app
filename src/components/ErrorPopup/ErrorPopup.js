@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from './ErrorPopup.css';
 
 export default class ErrorPopup extends React.Component {
-
   constructor(props, context) {
     super(props, context);
   }
@@ -13,7 +12,6 @@ export default class ErrorPopup extends React.Component {
   }
 
   render() {
-
     const { error } = this.props;
 
     return (
