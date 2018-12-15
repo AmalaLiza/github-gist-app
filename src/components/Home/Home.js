@@ -4,7 +4,7 @@ import styles from '../PublicGists/PublicGists.css';
 import TextField from '../TextField/TextField';
 import { loadPublicGistsOfUser } from '../../actions/action-creator';
 import { selectGists } from '../PublicGists/gists.selector';
-import banner from '../../assets/download.png';
+import banner from '../../assets/banner.png';
 
 class Home extends Component {
   render() {

@@ -11,6 +11,7 @@ export default class TextField extends React.Component {
     onEsc: PropTypes.func,
     defaultValue: PropTypes.string,
     value: PropTypes.string,
+    placeholder: PropTypes.string,
   };
 
   static defaultProps = {
@@ -22,6 +23,7 @@ export default class TextField extends React.Component {
     onEsc: f => f,
     defaultValue: '',
     value: '',
+    placeholder: 'Enter user name',
   };
 
   constructor(props, context) {
@@ -64,17 +66,19 @@ export default class TextField extends React.Component {
       className,
       defaultValue,
       value,
+      placeholder,
     } = this.props;
 
     return (<input
       type={type}
       id={id}
       className={className}
-      defaultValue={defaultValue}
-      value={value}
+      // defaultValue={defaultValue}
+      // value={value}
       onKeyDown={this.handleKeyDown}
       onChange={this.handleChange}
       autoFocus
+      placeholder={placeholder}
     />
     );
   }
