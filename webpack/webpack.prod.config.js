@@ -160,9 +160,9 @@ module.exports = () => ({
       minRatio: 0.8,
     }),
 
-    // new CopyWebpackPlugin([
-    //   { from: 'src/assets/favicon.jpg', to: 'favicon.jpg' },
-    // ], { copyUnmodified: true }),
+    new CopyWebpackPlugin([
+      { from: 'src/assets/favicon.jpg', to: 'favicon.jpg' },
+    ], { copyUnmodified: true }),
   ],
   externals: [
     'css-loader',

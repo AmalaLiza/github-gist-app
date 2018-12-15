@@ -52,7 +52,7 @@
 }
 
 .forkIcon {
-  background-image: url('./../../images/logo.png');
+  background-image: url('../../assets/logo.png');
   background-size: cover;
   height: 20px;
   width: 20px;
