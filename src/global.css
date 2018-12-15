@@ -1,3 +1,8 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-size: 14px;
   font-family: 'Nunito Sans', sans-serif;
@@ -5,6 +10,8 @@ body {
   margin: 0;
   color: #FFFFFF;
   background-color: #24292E;
+  width: 100%;
+  height: 100%;
 }
 
 .bold {
@@ -20,3 +27,13 @@ body {
 .url {
   cursor: pointer;
 }
+
+/*@media all and (max-width: 1690px) { }*/
+/*@media all and (max-width: 1280px) { }*/
+/*@media all and (max-width: 980px)  { }*/
+/*@media all and (max-width: 736px)  { }*/
+/*@media all and (max-width: 480px)  {*/
+  /*body{*/
+    /*background-color: red;*/
+  /*}*/
+/*}*/
