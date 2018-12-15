@@ -10,12 +10,10 @@ class Home extends Component {
   render() {
     return (
       <div className={styles.searchBoxWrapper}>
-        <img src={banner} />
+        <img src={banner}/>
         <div className={styles.searchWrapper}>
-          <span
-            className={styles.searchHint}
-          >
-Search users' gist by typing username and hit enter
+          <span className={styles.searchHint}>
+            Search users' gist by typing username and hit enter
           </span>
           <TextField
             type="text"

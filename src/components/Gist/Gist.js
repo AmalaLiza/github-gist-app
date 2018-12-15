@@ -59,17 +59,14 @@ class Gist extends Component {
 
             {gist.get('files')
               .toArray()
-              .map((file, index) => {
-                if (index < 3) {
-                  return (
-                    <Tag
-                      key={file.get('filename')}
-                      value={file.get('language') && file.get('language').length
-                        ? file.get('language') : getTag(file.get('type'))}
-                    />
-                  );
-                }
-              })}
+              .filter((a, index) => index < 3)
+              .map(file => (
+                <Tag
+                  key={file.get('filename')}
+                  value={file.get('language') && file.get('language').length
+                    ? file.get('language') : getTag(file.get('type'))}
+                />
+              ))}
 
             {gist.get('files').size > 3 ? <List gist={gist} /> : null}
 

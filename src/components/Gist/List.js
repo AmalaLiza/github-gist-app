@@ -73,10 +73,11 @@ class List extends Component {
           <div className={styles.list}>
 
             {gist.get('files')
-              .splice(3, 6)
-              .map(file => (
+              .valueSeq()
+              .filter((a, index) => index >= 3)
+              .map((file, index) => (
                 <Tag
-                  key={file.get('language')}
+                  key={index}
                   value={file.get('language') && file.get('language').length
                     ? file.get('language') : getTag(file.get('type'))}
                 />
