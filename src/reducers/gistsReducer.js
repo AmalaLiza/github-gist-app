@@ -10,7 +10,7 @@ import {
 
 const initialState = fromJS({
   user: {},
-  publicGists: fromJS({}),
+  publicGists: {},
   error: '',
 });
 
