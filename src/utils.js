@@ -11,7 +11,4 @@ import { normalize, schema } from 'normalizr';
 
 export const normalizeItems = (items, idAttribute) => normalize(items || [], [new schema.Entity('items', {}, { idAttribute: idAttribute || 'id' })]).entities.items;
 
-
-export const getDate = (date) => {
-  return `${new Date(date).getDate()}-${new Date(date).getDay()}-${new Date(date).getFullYear()} ${new Date(date).getHours()}:${new Date(date).getMinutes()} `;
-};
+export const getDate = date => `${new Date(date).getDate()}-${new Date(date).getDay()}-${new Date(date).getFullYear()} ${new Date(date).getHours()}:${new Date(date).getMinutes()} `;
