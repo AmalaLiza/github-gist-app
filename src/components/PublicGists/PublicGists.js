@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Immutable from 'immutable';
@@ -48,37 +48,31 @@ PublicGistsWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-class PublicGists extends Component {
-  static propTypes = {
-    gists: PropTypes.instanceOf(Immutable.Map).isRequired,
-    dispatch: PropTypes.func.isRequired,
-    user: PropTypes.instanceOf(Immutable.Map).isRequired,
-  };
+const PublicGists = ({ gists, user, dispatch }) => (
+  <PublicGistsWrapper className={styles.wrapper}>
+    {gists.size ? <UserDetails user={user} clearGists={() => dispatch(clearGists())} /> : null}
+    {gists.size ? <GistCount count={gists.size} /> : null}
 
-  render() {
-    const { gists, user, dispatch } = this.props;
+    <GistWrapper className={styles.gistWrapper}>
+      {gists
+        .valueSeq()
+        .map(gist => (
+          <Gist
+            key={gist.get('id')}
+            gist={gist}
+          />
+        ))}
 
-    return (
-      <PublicGistsWrapper className={styles.wrapper}>
-        {gists.size ? <UserDetails user={user} clearGists={() => dispatch(clearGists())} /> : null}
-        {gists.size ? <GistCount count={gists.size} /> : null}
+    </GistWrapper>
 
-        <GistWrapper className={styles.gistWrapper}>
-          {gists
-            .valueSeq()
-            .map(gist => (
-              <Gist
-                key={gist.get('id')}
-                gist={gist}
-              />
-            ))}
+  </PublicGistsWrapper>
+);
 
-        </GistWrapper>
-
-      </PublicGistsWrapper>
-    );
-  }
-}
+PublicGists.propTypes = {
+  gists: PropTypes.instanceOf(Immutable.Map).isRequired,
+  dispatch: PropTypes.func.isRequired,
+  user: PropTypes.instanceOf(Immutable.Map).isRequired,
+};
 
 const mapStateToProps = state => selectGists(state);
 export default connect(mapStateToProps)(PublicGists);
