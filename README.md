@@ -3,8 +3,6 @@ A single page application which uses Github's gist API.
 
 ## Getting Started
 
-* node
-
 Download node from [NODE](https://nodejs.org/en/)
 
 Download npm from [NPM](https://nodejs.org/en/) and follow the instructions
