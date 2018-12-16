@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    color: #000;
 }
 .wrapper{
     height: 75px;
