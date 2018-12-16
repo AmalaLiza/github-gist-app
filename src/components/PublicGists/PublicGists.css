@@ -37,7 +37,7 @@
 .gistWrapper {
   display: flex;
   flex-wrap: wrap;
-  height: calc(100% - 235px);
+  max-height: calc(100% - 235px);
   overflow: auto;
 }
 
