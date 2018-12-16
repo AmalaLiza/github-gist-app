@@ -9,7 +9,7 @@
   margin: auto;
   display: block;
   padding: 130px;
-  padding-bottom: 35px;
+  padding-bottom: 30px;
 }
 
 .searchBox {
@@ -37,7 +37,7 @@
 .gistWrapper {
   display: flex;
   flex-wrap: wrap;
-  height: calc(100% - 235px);
+  max-height: calc(100% - 235px);
   overflow: auto;
 }
 

@@ -22,13 +22,11 @@
 }
 
 .tagWrapper {
-  display: grid;
-  grid-row-gap: 5px;
-  grid-template-columns: 1fr 1fr 1fr;
+  float: left;
 }
 
 .forksWrapper {
-  flex-shrink: 0;
+  float: right;
 }
 
 .user {
