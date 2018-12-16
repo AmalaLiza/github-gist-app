@@ -12,19 +12,23 @@
 .detailsContainer {
   padding: 25px;
   overflow: auto;
+  height: 154px;
 }
 
 .gistFooter {
   border-top: 1px solid rgba(36, 41, 46, 0.5);
   padding: 10px 25px;
+  display: flex;
 }
 
 .tagWrapper {
-  float: left;
+  display: grid;
+  grid-row-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .forksWrapper {
-  float: right;
+  flex-shrink: 0;
 }
 
 .user {

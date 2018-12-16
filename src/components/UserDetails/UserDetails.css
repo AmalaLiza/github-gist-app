@@ -1,6 +1,7 @@
 .userDetails {
   padding: 30px 0;
   display: inline-block;
+  position: relative;
 }
 
 .detailsWrapper {
@@ -23,4 +24,11 @@
 
 .value {
   margin-left: 5px;
+}
+
+.backBtn {
+  position: absolute;
+  left: -25px;
+  bottom: 32px;
+  font-size: 18px;
 }

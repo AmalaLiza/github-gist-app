@@ -1,12 +1,13 @@
 import Immutable from 'immutable';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './UserDetails.css';
 import Avatar from '../Avatar/Avatar';
 
-const UserDetails = ({ user }) => (
+const UserDetails = ({ user, clearGists }) => (
   <div className={styles.userDetails}>
-
+    <i className={classNames('fa fa-arrow-left', styles.backBtn)} onClick={clearGists} />
     <Avatar
       className={styles.avatar}
       src={user.get('avatar_url')}
@@ -32,10 +33,12 @@ const UserDetails = ({ user }) => (
 
 UserDetails.propTypes = {
   user: PropTypes.instanceOf(Immutable.Map),
+  clearGists: PropTypes.func,
 };
 
 UserDetails.defaultProps = {
   user: Immutable.fromJS({}),
+  clearGists: f => f,
 };
 
 export default UserDetails;

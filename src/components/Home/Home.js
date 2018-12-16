@@ -4,15 +4,16 @@ import styles from '../PublicGists/PublicGists.css';
 import TextField from '../TextField/TextField';
 import { loadPublicGistsOfUser } from '../../actions/action-creator';
 import { selectGists } from '../PublicGists/gists.selector';
-import banner from '../../assets/banner.jpeg';
+import banner from '../../assets/banner.png';
 import { Footer } from '../Footer/Footer';
 
 class Home extends Component {
   render() {
     return (
       <Fragment>
-        <div className={styles.searchBoxWrapper}>
-          <img src={banner} />
+        <div className={styles.bannerWrapper}>
+          <img className={styles.bannerImg} src={banner} />
+        </div>
           <div className={styles.searchWrapper}>
             <span className={styles.searchHint}>
             Search users' gist by typing username and hit enter
@@ -23,7 +24,6 @@ class Home extends Component {
               onEnter={value => this.props.dispatch(loadPublicGistsOfUser(value))}
             />
           </div>
-        </div>
         <Footer />
       </Fragment>
     );

@@ -60,9 +60,7 @@ class PublicGists extends Component {
 
     return (
       <PublicGistsWrapper className={styles.wrapper}>
-        <div className={styles.searchBoxWrapper} onClick={() => dispatch(clearGists())} />
-
-        {gists.size ? <UserDetails user={user} /> : null}
+        {gists.size ? <UserDetails user={user} clearGists={() => dispatch(clearGists())} /> : null}
         {gists.size ? <GistCount count={gists.size} /> : null}
 
         <GistWrapper className={styles.gistWrapper}>
