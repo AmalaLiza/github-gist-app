@@ -10,7 +10,7 @@ import {
 
 const initialState = fromJS({
   user: {},
-  publicGists: {},
+  publicGists: fromJS({}),
   error: '',
 });
 
@@ -33,7 +33,7 @@ export default function gistsReducer(state = initialState, action) {
       return state.update('error', () => fromJS(action.error));
 
     case ACTION_HIDE_ERROR:
-      return state.update('error', () => false);
+      return state.update('error', () => '');
 
     case ACTION_CLEAR_GISTS:
       return state.update('publicGists', () => fromJS({}));

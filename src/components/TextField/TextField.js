@@ -9,10 +9,9 @@ export default class TextField extends React.Component {
     id: PropTypes.string,
     className: PropTypes.string,
     onChange: PropTypes.func,
+    onclick: PropTypes.func,
     onEnter: PropTypes.func,
     onEsc: PropTypes.func,
-    defaultValue: PropTypes.string,
-    value: PropTypes.string,
     placeholder: PropTypes.string,
   };
 
@@ -21,16 +20,17 @@ export default class TextField extends React.Component {
     id: '',
     className: '',
     onChange: f => f,
+    onclick: f => f,
     onEnter: f => f,
     onEsc: f => f,
-    defaultValue: '',
-    value: '',
-    placeholder: 'Enter user name',
+    placeholder: 'Enter username',
   };
 
   constructor(props, context) {
     super(props, context);
-
+    this.state = {
+      value: '',
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
@@ -41,6 +41,7 @@ export default class TextField extends React.Component {
   handleChange(event) {
     if (this.props.onChange) {
       let value = event.target.value;
+      this.setState({ value });
 
       if (this.props.type === 'number') value = value ? +value : null;
 
@@ -66,10 +67,11 @@ export default class TextField extends React.Component {
       id,
       type,
       className,
-      defaultValue,
-      value,
       placeholder,
+      onclick,
     } = this.props;
+
+    const { value } = this.state;
 
     return (
       <div className={styles.inputWrapper}>
@@ -77,14 +79,12 @@ export default class TextField extends React.Component {
           type={type}
           id={id}
           className={className}
-      // defaultValue={defaultValue}
-      // value={value}
           onKeyDown={this.handleKeyDown}
           onChange={this.handleChange}
-          autoFocus
           placeholder={placeholder}
+          autoFocus
         />
-        <i className={classNames('fa fa-search',styles.icon)} />
+        <i className={classNames('fa fa-search', styles.icon)} onClick={() => onclick(value)} />
       </div>
     );
   }

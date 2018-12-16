@@ -2,6 +2,7 @@
   padding: 50px 0 0 80px;
   position: relative;
   height: 100%;
+  background: #191c1f;
 }
 
 .bannerImg {
@@ -12,7 +13,7 @@
 }
 
 .searchBox {
-  font-size: 18px;
+  font-size: 15px;
   width: 705px;
   background-color: #F1F3F4;
   border: none;
@@ -27,7 +28,7 @@
 }
 
 .searchHint {
-  color: #c3c3c3;
+  color: #2f363d;
   font-size: 16px;
   margin-bottom: 10px;
   display: block;
@@ -70,5 +71,6 @@
 }
 
 .bannerWrapper {
-  background-color: #f1f3f4b3;
+  background-color: #2f363d;
+  height: 380px;
 }
