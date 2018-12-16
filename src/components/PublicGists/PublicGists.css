@@ -1,9 +1,12 @@
 .wrapper {
   padding: 50px 0 0 80px;
   position: relative;
+  height: 100%;
 }
 
 .searchBoxWrapper {
+  padding-bottom: 15px;
+  background: cover url("../../assets/back-button.png");
 }
 
 .searchBox {
@@ -31,6 +34,8 @@
 .gistWrapper {
   display: flex;
   flex-wrap: wrap;
+  height: calc(100% - 215px);
+  overflow: auto;
 }
 
 .gistCount {

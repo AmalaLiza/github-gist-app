@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Immutable from 'immutable';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import ErrorPopup from '../../components/ErrorPopup/ErrorPopup';
 import PublicGists from '../../components/PublicGists/PublicGists';
@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     const { gists, error } = this.props;
     return (
-      <div>
+      <Fragment>
         {gists.size ? <PublicGists /> : <Home />}
         {error ? (
           <ErrorPopup
@@ -47,7 +47,7 @@ class App extends Component {
             hideError={this.hideError}
           />
         ) : null}
-      </div>
+      </Fragment>
     );
   }
 }

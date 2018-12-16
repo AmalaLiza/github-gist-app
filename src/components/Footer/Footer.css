@@ -1,0 +1,23 @@
+.container{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.wrapper{
+    height: 75px;
+    background-color: #ff00a5;
+    padding: 10px 60px;
+    position: relative;
+
+}
+
+.logoWrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logoWrapper img {
+    display: block;
+    margin-bottom: 5px;
+}

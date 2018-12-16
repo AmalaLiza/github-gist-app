@@ -1,5 +1,7 @@
 import * as React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import * as styles from './TextField.css';
 
 export default class TextField extends React.Component {
   static propTypes = {
@@ -69,17 +71,21 @@ export default class TextField extends React.Component {
       placeholder,
     } = this.props;
 
-    return (<input
-      type={type}
-      id={id}
-      className={className}
+    return (
+      <div className={styles.inputWrapper}>
+        <input
+          type={type}
+          id={id}
+          className={className}
       // defaultValue={defaultValue}
       // value={value}
-      onKeyDown={this.handleKeyDown}
-      onChange={this.handleChange}
-      autoFocus
-      placeholder={placeholder}
-    />
+          onKeyDown={this.handleKeyDown}
+          onChange={this.handleChange}
+          autoFocus
+          placeholder={placeholder}
+        />
+        <i className={classNames('fa fa-search',styles.icon)} />
+      </div>
     );
   }
 }
