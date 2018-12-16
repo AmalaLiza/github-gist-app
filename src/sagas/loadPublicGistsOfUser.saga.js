@@ -16,22 +16,16 @@ import {
  */
 
 export function* loadPublicGistsOfUser(action) {
-
   try {
-
-    const URL_LOAD_PUBLIC_GISTS = BASE_URL + '/users/' + action.userName + '/gists';
+    const URL_LOAD_PUBLIC_GISTS = `${BASE_URL}/users/${action.userName}/gists`;
     const response = yield call(request, URL_LOAD_PUBLIC_GISTS, { method: 'GET' });
 
     if (response && response.length === 0) {
       yield put(loadPublicGistsOfUserError('No Gists Found'));
       yield put(loadPublicGistsOfUserSuccess());
-    }
-    else
-      yield put(loadPublicGistsOfUserSuccess(normalizeItems(response, 'id'), response[0].owner));
-
+    } else yield put(loadPublicGistsOfUserSuccess(normalizeItems(response, 'id'), response[0].owner));
   } catch (error) {
-    if (error === 'Not Found')
-      error = 'Username not found';
+    if (error === 'Not Found') error = 'Username not found';
     yield put(loadPublicGistsOfUserError(error));
     yield put(loadPublicGistsOfUserSuccess());
   }

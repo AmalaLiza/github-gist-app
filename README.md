@@ -3,11 +3,13 @@ A single page application which uses Github's gist API.
 
 ## Getting Started
 
-* npm
+* node
+
+Download node from [NODE](https://nodejs.org/en/)
 
 Download npm from [NPM](https://nodejs.org/en/) and follow the instructions
 
-Check whether its installed by
+Check whether both are installed by typing
 ```
 node -v
 npm -v
@@ -20,12 +22,12 @@ npm install npm@latest -g
 
 ### Clone Project
 ```
-git clone https://github.com/AmalaLiza/wakecap.git
+git clone https://github.com/AmalaLiza/github-gist-app.git
 ```
 
 ### Install Packages
 ```
-cd wakecap
+cd github-gist-app
 npm i
 ```
 
@@ -39,7 +41,7 @@ npm start
 - Code placement:
     - Components:
         - Those components which are independent, go in "src>components" folder.
-        Example: Avatar, Header, SideBar
+        Example: Avatar, Footer, PublicGists
     - Containers:
-        - Example App, Contents
+        - Example App.
 
