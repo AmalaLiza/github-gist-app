@@ -14,9 +14,9 @@ const Home = ({ dispatch }) => (
       <img className={styles.bannerImg} src={banner} />
     </div>
     <div className={styles.searchWrapper}>
-        <span className={styles.searchHint}>
+      <span className={styles.searchHint}>
             Search gists by typing username and hit enter
-        </span>
+      </span>
       <TextField
         onclick={value => dispatch(loadPublicGistsOfUser(value))}
         type="text"
